@@ -38,7 +38,7 @@ kotlin {
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
-            implementation(compose.material)
+            implementation(compose.material3)
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
@@ -52,6 +52,7 @@ kotlin {
             implementation(projects.network.implementation)
             implementation(projects.domain.auth.api)
             implementation(projects.domain.auth.implementation)
+            implementation(projects.userInterface)
             implementation(project.dependencies.platform(libs.koin.bom))
             implementation(project.dependencies.platform(libs.koin.annotations.bom))
             implementation(libs.koin.annotations)

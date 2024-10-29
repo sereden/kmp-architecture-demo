@@ -37,6 +37,9 @@ kotlin {
     }
 
     sourceSets {
+        androidMain.dependencies {
+            implementation(libs.compose.pay.button)
+        }
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)

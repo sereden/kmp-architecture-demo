@@ -52,6 +52,7 @@ kotlin {
             implementation(projects.network.implementation)
             implementation(projects.domain.auth.api)
             implementation(projects.domain.auth.implementation)
+            implementation(projects.ui)
             implementation(project.dependencies.platform(libs.koin.bom))
             implementation(project.dependencies.platform(libs.koin.annotations.bom))
             implementation(libs.koin.annotations)

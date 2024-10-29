@@ -29,5 +29,6 @@ dependencyResolutionManagement {
 }
 
 include(":composeApp")
+include(":ui")
 apply(from = "data/data.gradle.kts")
 apply(from = "domain/domain.gradle.kts")

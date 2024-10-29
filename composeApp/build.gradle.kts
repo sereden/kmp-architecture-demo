@@ -1,11 +1,13 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.ksp)
 }
 
 kotlin {
@@ -51,8 +53,16 @@ kotlin {
             implementation(projects.domain.auth.api)
             implementation(projects.domain.auth.implementation)
             implementation(project.dependencies.platform(libs.koin.bom))
+            implementation(project.dependencies.platform(libs.koin.annotations.bom))
+            implementation(libs.koin.annotations)
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
+            implementation(libs.viewmodel)
+            implementation(libs.navigation)
+            implementation(libs.koin.viewmodel)
+        }
+        commonMain.configure {
+            kotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin")
         }
     }
 }
@@ -86,5 +96,17 @@ android {
 
 dependencies {
     debugImplementation(compose.uiTooling)
+    add("kspCommonMainMetadata", libs.koin.ksp.compiler)
 }
 
+ksp {
+    arg("KOIN_CONFIG_CHECK", "false")
+    arg("KOIN_DEFAULT_MODULE", "false")
+}
+
+// Trigger Common Metadata Generation from Native tasks
+project.tasks.withType(KotlinCompilationTask::class.java).configureEach {
+    if (name != "kspCommonMainKotlinMetadata") {
+        dependsOn("kspCommonMainKotlinMetadata")
+    }
+}

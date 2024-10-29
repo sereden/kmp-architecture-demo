@@ -11,4 +11,5 @@ fun appModule() = listOf(
     DatabaseModule().module,
     NetworkModule().module,
     AuthDomainModule().module,
+    PresentationModule().module
 )

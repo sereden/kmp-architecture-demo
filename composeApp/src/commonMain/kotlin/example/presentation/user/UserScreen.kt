@@ -6,40 +6,28 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import domain.auth.api.domain.repository.GetUserUseCase
-import domain.auth.api.model.user.User
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
-import org.koin.compose.koinInject
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import example.domain.user.UserViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun UserScreen(
-    getUserUseCase: GetUserUseCase = koinInject()
+    viewModel: UserViewModel = koinViewModel()
 ) {
-    val scope = rememberCoroutineScope()
-    var user by remember { mutableStateOf<User?>(null) }
-    // Move to ViewModel
-    LaunchedEffect(Unit) {
-        scope.launch {
-            getUserUseCase().collectLatest { result ->
-                user = result.getOrNull()
-            }
-        }
-    }
+    val state by viewModel.screen.collectAsStateWithLifecycle()
 
-    Column(modifier = Modifier.fillMaxSize()) {
-        if (user == null) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        if (state.user == null) {
             LinearProgressIndicator(
                 modifier = Modifier.fillMaxWidth()
             )
         }
-        Text("User: ${user?.id.orEmpty()} create at: ${user?.createAt ?: "N/A"}")
+        Text("User: ${state.user?.id.orEmpty()} create at: ${state.user?.createAt ?: "N/A"}")
     }
 }

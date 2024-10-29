@@ -1,7 +1,8 @@
-package example
+package example.presentation.main
 
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.navigation.compose.rememberNavController
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.KoinContext
 import example.presentation.user.UserScreen
@@ -11,7 +12,7 @@ import example.presentation.user.UserScreen
 fun App() {
     MaterialTheme {
         KoinContext {
-            UserScreen()
+            Navigation(rememberNavController())
         }
     }
 }

@@ -1,4 +1,4 @@
-package test.resources.di
+package example.di
 
 import data.database.implementation.di.DatabaseModule
 import data.implementation.di.DataModule

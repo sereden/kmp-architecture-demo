@@ -1,8 +1,8 @@
-package test.resources
+package example
 
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
-import test.resources.di.appModule
+import example.di.appModule
 
 fun doInitDependencyFramework(): KoinApplication {
     return startKoin {

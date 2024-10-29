@@ -1,4 +1,4 @@
-package test.resources
+package example
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

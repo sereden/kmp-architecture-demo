@@ -1,8 +1,8 @@
-package test.resources
+package example
 
 import android.app.Application
 import org.koin.core.context.startKoin
-import test.resources.di.appModule
+import example.di.appModule
 
 class MainApplication : Application() {
     override fun onCreate() {

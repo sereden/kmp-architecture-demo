@@ -1,4 +1,4 @@
-package test.resources.screen
+package example.presentation.user
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

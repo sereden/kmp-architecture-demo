@@ -24,7 +24,7 @@ struct ContentView: View {
 class ComposeCoordinator {
 
     init() {
-        DependencyInjectionKt.doInitDependencyFramework()
+        DependencyInjectionKt.doInitDependencyFramework(appComponent: IosApplicationComponent(keystore: KeystoreManagerImpl()))
     }
 }
 

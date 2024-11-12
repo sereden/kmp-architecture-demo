@@ -1,7 +1,7 @@
-package domain.auth.implementation.domain
+package domain.auth.implementation.domain.user
 
 import data.api.domain.repository.UserRepository
-import domain.auth.api.domain.repository.GetUserUseCase
+import domain.auth.api.domain.user.GetUserUseCase
 import domain.auth.api.model.user.User
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

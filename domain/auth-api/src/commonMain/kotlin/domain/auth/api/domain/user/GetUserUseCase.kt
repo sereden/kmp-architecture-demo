@@ -1,4 +1,4 @@
-package domain.auth.api.domain.repository
+package domain.auth.api.domain.user
 
 import domain.auth.api.model.user.User
 import kotlinx.coroutines.flow.Flow

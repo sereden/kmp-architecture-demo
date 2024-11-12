@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import example.domain.user.UserViewModel
+import example.model.UserScreenEvent
 import example.presentation.main.LocalProviders
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -32,10 +33,19 @@ fun UserScreen(
             )
         }
         Text("User: ${state.user?.id.orEmpty()} create at: ${state.user?.createAt ?: "N/A"}")
+        if (state.keyId.isNotEmpty()) {
+            Text("Generated key id: ${state.keyId}")
+        }
         OutlinedButton({
             navController.navigate("payment")
         }) {
             Text("Navigate to payment screen")
+        }
+
+        OutlinedButton({
+            viewModel.onEvent(UserScreenEvent.GenerateEcKey)
+        }) {
+            Text("Generate EC key pair")
         }
     }
 }

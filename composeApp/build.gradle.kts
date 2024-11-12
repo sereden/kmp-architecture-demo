@@ -26,6 +26,7 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+            export(projects.data.api)
         }
     }
 
@@ -45,7 +46,7 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
-            implementation(projects.data.api)
+            api(projects.data.api)
             implementation(projects.data.implementation)
             implementation(projects.database.api)
             implementation(projects.database.implementation)

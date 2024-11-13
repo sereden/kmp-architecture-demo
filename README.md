@@ -1,14 +1,10 @@
-This is a Kotlin Multiplatform project targeting Android, iOS.
+# Kotlin Multiplatform Project Example
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+This project serves as an example of a Kotlin Multiplatform setup, covering several [topics discussed on Medium](https://medium.com/@andriiseredenko). Feel free to fork it and use it as a template for your own project.
 
-* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform, 
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
-
-
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+### Topics Covered
+* [Application Architecture](https://medium.com/@andriiseredenko/from-android-to-multiplatform-a-developers-roadmap-f1556dadd634)
+* [Writing iOS Code in Kotlin Using `expect`/`actual`](https://medium.com/@andriiseredenko/writing-ios-code-in-kotlin-multiplatform-part-1-619bfdcff7f4)
+* Accessing Context and Platform-Specific Dependencies in `actual` Implementations
+* Working with CInterop (Objective-C Code)
+* Writing Swift Code
